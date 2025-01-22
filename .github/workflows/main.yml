@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-20.04]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.1.5
     - name: Installing JDK 7 + Build Dependencies
       run: |
         sudo apt-get update
@@ -37,10 +37,10 @@ jobs:
         source build/envsetup.sh
         export ALLOW_MISSING_DEPENDENCIES=true
         export LC_ALL=C
-        lunch omni_j3xltebmc-userdebug
+        lunch omni_j3xltebmc-eng
         mka recoveryimage
     - name: Uploading TWRP builds
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: twrp
         path: /home/runner/TWRP/out/target/product/j3xltebmc/recovery.*
